@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%date [%thread] %-5level %logger{36}- %msg%n</pattern>
+        </layout>
+    </appender>
+    <appender name="kafka" class="com.along101.logclient.logback.KafkaAppender">
+        <layout>
+            <pattern>%date [%thread] %-5level %logger{36}- %msg%n</pattern>
+        </layout>
+        <topic>framework.log</topic>
+        <reportTopic>framework.metric</reportTopic>
+        <appId>123456</appId>
+        <bootstrapServers>localhost:9092</bootstrapServers>
+    </appender>
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="kafka"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

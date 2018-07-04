@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.along101.logclient</groupId>
+        <artifactId>log-client-test</artifactId>
+        <version>0.0.5</version>
+    </parent>
+    <artifactId>log-client-test-logback</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <logback.version>1.1.11</logback.version>
+    </properties>
+
+    <modules>
+        <module>test-logback1.0.0</module>
+        <module>test-logback1.1.0</module>
+        <module>test-logback1.1.11</module>
+        <module>test-logback1.2.0</module>
+        <module>catTraceTest</module>
+        <module>catNotContainTest</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

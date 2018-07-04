@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date [%thread] %-5level %logger{36}- %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--注意class为com.along101.logback.appender.MailAppender-->
+    <appender name="EMAIL" class="com.along101.logclient.logback.MailAppender">
+        <!--evaluator需要配合cyclicBufferTracker一起使用才会生效-->
+        <evaluator class="com.along101.logback.SMTPFrequencyEvaluator">
+            <!--控制同一错误邮件的发送频率，maxCount表示每{}个同一错误只发送一个错误邮件，该属性与expiredTime满足其一即可-->
+            <maxCount>1000</maxCount>
+            <!--控制同一错误邮件的发送频率，expiredTime表示每{}秒分钟同一错误只发送一个错误邮件，该属性与maxCount满足其一即可-->
+            <expiredTime>300</expiredTime>
+        </evaluator>
+        <cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+            <!-- 没封邮件只发送一个log -->
+            <bufferSize>1</bufferSize>
+        </cyclicBufferTracker>
+        <!--SMTP服务器地址-->
+        <smtpHost>192.168.1.210</smtpHost>
+        <!--SMTP服务器端口号，默认值为25-->
+        <smtpPort>25</smtpPort>
+        <username>deploy</username>
+        <password>cndns22!</password>
+        <!--收件人，多个收件人用英文,分隔，或者多个<to></to>-->
+        <to>yinzuolong@along101.com</to>
+        <!--收件人，多个收件人用英文,分隔，或者多个<to></to>-->
+        <!--<to>zhangchui@along101.com</to>-->
+        <!--发件人-->
+        <from>deploy@corp.along101.com</from>
+        <!--邮件标题  %X{ip} 标签需要升级版本至1.1才会生效-->
+        <subject>【Error】%X{ip}: %logger{20} - %m 累积错误数：%X{error_count}</subject>
+        <layout class="ch.qos.logback.classic.html.HTMLLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}%level%thread%logger{35}%message</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="EMAIL"/>
+    </root>
+
+</configuration>

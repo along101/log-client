@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="kafka" class="com.along101.logclient.logback.KafkaAppender">
+        <layout>
+            <pattern>%date [%thread] %-5level %logger{36}- %msg%n</pattern>
+        </layout>
+        <topic>framework.log</topic>
+        <reportTopic>framework.metric</reportTopic>
+        <reportPeriod>5</reportPeriod>
+        <appId>789456</appId>
+        <bootstrapServers>localhost:9092</bootstrapServers>
+    </appender>
+    <logger name="com.along1011" level="DEBUG" additivity="false">
+        <appender-ref ref="kafka"/>
+    </logger>
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="kafka"/>
+    </root>
+
+</configuration>

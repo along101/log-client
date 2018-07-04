@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.along101.logclient</groupId>
+        <artifactId>log-client-test</artifactId>
+        <version>0.0.5</version>
+    </parent>
+    <artifactId>log-client-test-log4j2</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+    </properties>
+
+    <modules>
+        <module>test-log4j2.0</module>
+        <module>test-log4j2.4</module>
+        <module>test-log4j2.8</module>
+    </modules>
+</project>
