@@ -2,11 +2,11 @@
 <Configuration status="WARN">
 
     <Appenders>
-        <PpdKafka name="KafkaAppender" topic="framework.log" reportTopic="framework.metric" reportPeriod="5"
+        <Along101 name="KafkaAppender" topic="framework.log" reportTopic="framework.metric" reportPeriod="5"
                   appId="456789">
             <PatternLayout pattern="%date [%thread] %-5level %logger{36}- %msg%n"/>
             <Property name="bootstrap.servers">localhost:9092</Property>
-        </PpdKafka>
+        </Along101>
     </Appenders>
     <Loggers>
         <Root level="info">

@@ -26,7 +26,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by yinzuolong on 2017/6/15.
  */
-@Plugin(name = "PpdKafka", category = Node.CATEGORY, elementType = "appender", printObject = true)
+@Plugin(name = "Along101", category = Node.CATEGORY, elementType = "appender", printObject = true)
 public final class KafkaAppender extends AbstractAppender implements FailedTransportCallback {
 
     private static String METRIC_PREFIX = "logclient";
