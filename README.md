@@ -1,0 +1,2 @@
+# log-client
+logclient是基础框架部新开发的一套日志客户端，目前提供了logbcak和log4j2的appender，将日志通过appender写入kafka，然后由一个日志收集器将日志写入elk中。
